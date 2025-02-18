@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_strapi
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: imdigital_db
+      MYSQL_USER: strapi
+      MYSQL_PASSWORD: strapi
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  strapi:
+    build: ./back
+    container_name: strapi_app
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_CLIENT: mysql
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_NAME: imdigital_db
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+      NODE_ENV: development
+    ports:
+      - '1337:1337'
+    volumes:
+      - ./back:/app
+      - /app/node_modules
+
+  nextjs:
+    build: ./front
+    container_name: nextjs_app
+    restart: always
+    depends_on:
+      - strapi
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:1337
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+
+volumes:
+  mysql_data:
