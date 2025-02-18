@@ -1,0 +1,39 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🔑 Login no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: 🏗 Construir imagem do Frontend (Next.js)
+        run: |
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/im-digital-front:latest -f Dockerfile.front .
+
+      - name: 📤 Enviar imagem do Frontend para o Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/im-digital-front:latest
+
+      - name: 🏗 Construir imagem do Backend (Strapi)
+        run: |
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/im-digital-back:latest -f Dockerfile.back .
+
+      - name: 📤 Enviar imagem do Backend para o Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/im-digital-back:latest
