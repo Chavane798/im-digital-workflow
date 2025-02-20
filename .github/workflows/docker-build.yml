@@ -25,7 +25,8 @@ jobs:
       # Construção da imagem do Frontend (Next.js)
       - name: 🏗 Construir imagem do Frontend (Next.js)
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/im-digital-nextjs:latest -f im-digital/front/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/im-digital-nextjs:latest -f front/Dockerfile .
+
 
       # Envio da imagem do Frontend para o Docker Hub
       - name: 📤 Enviar imagem do Frontend para o Docker Hub
