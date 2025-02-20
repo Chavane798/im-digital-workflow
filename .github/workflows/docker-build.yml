@@ -25,19 +25,19 @@ jobs:
       # Construção da imagem do Frontend (Next.js)
       - name: 🏗 Construir imagem do Frontend (Next.js)
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/im-digital-front:latest -f im-digital/front/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/im-digital-nextjs:latest -f im-digital/front/Dockerfile .
 
       # Envio da imagem do Frontend para o Docker Hub
       - name: 📤 Enviar imagem do Frontend para o Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/im-digital-front:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/im-digital-nextjs:latest
 
       # Construção da imagem do Backend (Strapi)
       - name: 🏗 Construir imagem do Backend (Strapi)
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/im-digital-back:latest -f im-digital/back/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/im-digital-strapi:latest -f im-digital/back/Dockerfile .
 
       # Envio da imagem do Backend para o Docker Hub
       - name: 📤 Enviar imagem do Backend para o Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/im-digital-back:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/im-digital-strapi:latest
