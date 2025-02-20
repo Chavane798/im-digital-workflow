@@ -22,6 +22,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+      - name: 📂 Listar arquivos do repositório
+        run: ls -R      
+
       # Construção da imagem do Frontend (Next.js)
       - name: 🏗 Construir imagem do Frontend (Next.js)
         run: |
