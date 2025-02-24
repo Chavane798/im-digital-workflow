@@ -1,6 +1,5 @@
 export default async function About() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${apiUrl}/api/about?populate[blocks][populate]=*`);
+  const res = await fetch("http://localhost:1337/api/about?populate[blocks][populate]=*");
   const response = await res.json();
   const post = response.data;
 
@@ -17,7 +16,7 @@ export default async function About() {
           )}
 
           {block.__component === "shared.media" && block.image && (
-            <img src={`${apiUrl}${block.image.url}`} alt="Imagem" />
+            <img src={`http://localhost:1337${block.image.url}`} alt="Imagem" />
           )}
         </div>
       ))}
