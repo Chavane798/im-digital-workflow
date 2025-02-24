@@ -1,12 +1,12 @@
 export async function fetchSiteData() {
-    const response = await fetch("http://localhost:1337/api/global?populate=*");
+    const response = await fetch("http://strapi:1337/api/global?populate=*");
     const data = await response.json();
     return data.data;
 }
 
-export default async function global() {
+export default async function Global() {
     const site = await fetchSiteData();
-  
+   
     return (
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">{site.siteName}</h1>
