@@ -23,7 +23,7 @@ export default async function HomePage() {
       {imagem && imagem.formats && imagem.formats.medium && (
         <div className="mt-6">
           <Image
-            src={`http://strapi:1337${imagem.formats.medium.url}`}
+            src={`http://localhost:1337/api/upload/files`}
             alt={titulo}
             width={750}
             height={419}
