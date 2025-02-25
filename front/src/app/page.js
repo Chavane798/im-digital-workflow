@@ -1,5 +1,5 @@
 import HomePage from "./homePage/page";
-//import Servicos from "./servicos/page";
+
 
 
 export default async function Home() {
@@ -10,7 +10,7 @@ export default async function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <HomePage />
 
-        {/*<Servicos/>*/}
+        
       </main>
     </div>
   );
