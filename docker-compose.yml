@@ -23,6 +23,8 @@ services:
 
   strapi:
     build: ./back
+    context: .
+    dockerfile: dockerfile
     container_name: strapi_app
     restart: always
     depends_on:
