@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fotos",
+  "info": {
+    "singularName": "foto",
+    "pluralName": "fotos",
+    "displayName": "foto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "dd": {
+      "type": "string"
+    }
+  }
+}
