@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+
 
 async function fetchData() {
-  const res = await fetch(`${API_URL}/api/homepage?populate=*`);
+  const res = await fetch(`http://strapi:1337/api/homepage?populate=*`);
   const data = await res.json();
   return data.data;
 }

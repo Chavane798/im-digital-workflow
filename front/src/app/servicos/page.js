@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 async function fetchData() {
-  const res = await fetch(`${process.env.API_URL}/api/servicos?populate=*`);
+  const res = await fetch(`http://strapi:1337/api/servicos?populate=*`);
   const data = await res.json();
   return data.data;
 }
@@ -16,7 +16,7 @@ export default async function Servicos() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {serviços.map((serviço) => {
           const { title, description, image } = serviço;
-          const imgUrl = image && image[0] ? `${process.env.API_URL}${image[0].url}` : '';
+          const imgUrl = image && image[0] ? `http://strapi:1337${image[0].url}` : '';
 
           return (
             <div key={serviço.id} className="service-card bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">

@@ -2,8 +2,7 @@ FROM node:18
 
 WORKDIR /app/back
 
-
-#COPY /back/package.json /back/package-lock.json ./back/
+COPY package*.json ./
 
 COPY ./back/package*.json ./
 

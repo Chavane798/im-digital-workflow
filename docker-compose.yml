@@ -23,8 +23,6 @@ services:
 
   strapi:
     build: ./back
-    context: .
-    dockerfile: dockerfile
     container_name: strapi_app
     restart: always
     depends_on:
@@ -42,6 +40,8 @@ services:
     volumes:
       - ./back:/app
       - /app/node_modules
+      - ./back/uploads:/app/public/uploads
+      - ./back/config:/app/config 
 
   nextjs:
     build: ./front
